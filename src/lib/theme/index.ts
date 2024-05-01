@@ -1,8 +1,6 @@
-"use client";
+'use client';
 
-import { createTheme } from "@mui/material/styles";
-
-const font = '"Nunito", "sans"';
+import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
@@ -13,12 +11,25 @@ const theme = createTheme({
   components: {
     MuiButton: {
       defaultProps: {
-        variant: 'contained'
+        variant: 'contained',
+        sx: {
+          padding: '.5rem 2rem'
+        }
+      }
+    },
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: 'lg'
+      }
+    },
+    MuiStack: {
+      defaultProps: {
+        direction: 'row'
       }
     }
   },
   typography: {
-    fontFamily: font
+    fontFamily: ['Nunito', 'sans'].join(',')
   }
 });
 
