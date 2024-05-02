@@ -53,17 +53,17 @@ function MainNav() {
             </Box>)
           }
         </Stack>
-        <Box>
+        <Link href={'/login'}>
           <Button
             variant="outlined"
             className="duration-200 hover:bg-[#0075ff] hover:text-white"
           >
             Login
           </Button>
-        </Box>
+        </Link>
       </Stack>
     </Container>
   );
 }
 
-export default MainNav; 
+export default MainNav;

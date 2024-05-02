@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero/Hero";
 import { Box } from "@mui/material";
 
-function page() {
+function Home() {
   return (
     <Box>
       <Hero />
@@ -9,4 +9,4 @@ function page() {
   );
 }
 
-export default page;
+export default Home;

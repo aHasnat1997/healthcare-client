@@ -69,7 +69,7 @@ function Hero() {
             {
               cardData.map((data, i) => <div
                 key={i}
-                className="relative bg-white shadow-[0_0_1.5rem_rgba(0,0,0,0.3)] rounded-[.5rem_2rem] duration-300 group hover:-translate-y-4 hover:bg-[#0077ff] hover:text-white"
+                className="relative bg-white shadow-[0_0_1.5rem_rgba(0,0,0,0.1)] rounded-[.5rem_2rem] duration-500 group hover:-translate-y-4 hover:bg-[#0077ff] hover:text-white"
               >
                 {/* <div className="bg-[#0077ff] w-full h-full rounded-[.5rem_2rem]" /> */}
                 <Stack
@@ -78,9 +78,9 @@ function Hero() {
                   spacing={2}
                   sx={{ padding: '1.5rem 2rem' }}
                 >
-                  <h2 className="text-6xl text-[#0077ff] group-hover:text-white">{data.icon}</h2>
-                  <h4 className="text-2xl font-semibold">{data.title}</h4>
-                  <p className="text-justify">{data.paragraph}</p>
+                  <h2 className="text-4xl text-[#0077ff] group-hover:text-white">{data.icon}</h2>
+                  <h4 className="text-xl font-semibold">{data.title}</h4>
+                  <p className="text-justify text-sm">{data.paragraph}</p>
                 </Stack>
               </div>)
             }

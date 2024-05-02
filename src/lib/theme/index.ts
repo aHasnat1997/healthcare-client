@@ -26,6 +26,12 @@ const theme = createTheme({
       defaultProps: {
         direction: 'row'
       }
+    },
+    MuiTextField: {
+      defaultProps: {
+        variant: 'outlined',
+        fullWidth: true
+      }
     }
   },
   typography: {
