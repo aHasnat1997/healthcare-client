@@ -2,6 +2,7 @@ import assets from "@/assets";
 import { Box, Button, Container, Stack } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import NavButton from "./NavButton";
 
 function MainNav() {
   type TNavContent = {
@@ -49,18 +50,14 @@ function MainNav() {
         <Stack spacing='4rem'>
           {
             navContent.map((item, i) => <Box key={i}>
-              <Link href={item.path} className="hover:text-[#0075ff]">{item.title}</Link>
+              <div className="w-fit group">
+                <Link href={item.path} className="hover:text-[#0075ff]">{item.title}</Link>
+                <div className="p-[1px] bg-[#0075ff] origin-left scale-0 duration-500 group-hover:scale-100"></div>
+              </div>
             </Box>)
           }
         </Stack>
-        <Link href={'/login'}>
-          <Button
-            variant="outlined"
-            className="duration-200 hover:bg-[#0075ff] hover:text-white"
-          >
-            Login
-          </Button>
-        </Link>
+        <NavButton />
       </Stack>
     </Container>
   );
