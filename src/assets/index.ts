@@ -6,6 +6,10 @@ const assets = {
     heroImgShape: require('./img/hero-shape.png'),
     loginImg: require('./img/bg-image.jpeg'),
     registerImg: require('./img/hero-bg-2.jpeg')
+  },
+  animations: {
+    notFound: require('./animation/animation-1.json'),
+    error: require('./animation/animation-2.json')
   }
 };
 
