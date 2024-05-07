@@ -7,7 +7,6 @@ import ProfileButton from "./ProfileButton";
 function NavButton() {
   const router = useRouter();
   const currentUser = JSON.parse(localStorage.getItem('access-token')!);
-  // console.log(currentUser);
 
   return (
     <Box>

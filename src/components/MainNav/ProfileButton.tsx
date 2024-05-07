@@ -1,7 +1,13 @@
-import { Avatar, Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+'use client';
+
+import { Avatar, Box, Button, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack } from "@mui/material";
 import { useState } from "react";
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
+import Link from "next/link";
 
 // type TCurrentUser = {
 //   name: string;
@@ -13,8 +19,22 @@ import MailIcon from '@mui/icons-material/Mail';
 // };
 
 function ProfileButton() {
+  const router = useRouter();
   const currentUser = JSON.parse(localStorage.getItem('access-token')!);
   const userNameIcon = currentUser?.name?.split(' ').slice(0, 2).map((item: string[]) => item[0]).join('').toUpperCase();
+
+  type TUserNaveList = {
+    title: string,
+    path: string,
+    icon: React.ReactNode
+  };
+  const userNavList: TUserNaveList[] = [
+    {
+      title: 'Dashboard',
+      path: '/dashboard',
+      icon: <SpaceDashboardIcon />
+    }
+  ];
 
   const [open, setOpen] = useState(false);
 
@@ -22,35 +42,12 @@ function ProfileButton() {
     setOpen(newOpen);
   };
 
-  const DrawerList = (
-    <Box sx={{ width: 250 }} onClick={toggleDrawer(false)}>
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+  function handelLogout() {
+    localStorage.removeItem('access-token');
+    router.refresh();
+    toast.error('User Logout');
+  };
+
 
   return (
     <>
@@ -67,7 +64,35 @@ function ProfileButton() {
         }
       </Box>
       <Drawer open={open} anchor='right' onClose={toggleDrawer(false)}>
-        {DrawerList}
+        <Box sx={{ width: 250, height: '100vh' }} onClick={toggleDrawer(false)}>
+          <Stack sx={{ width: '100%', height: '100%' }} direction='column' justifyContent='space-between'>
+            <Box>
+              <List>
+                {userNavList.map((item, index) => (
+                  <Link href={item.path} key={index}>
+                    <ListItem disablePadding>
+                      <ListItemButton>
+                        <ListItemIcon>
+                          {item.icon}
+                        </ListItemIcon>
+                        <ListItemText primary={item.title} />
+                      </ListItemButton>
+                    </ListItem>
+                  </Link>
+                ))}
+              </List>
+            </Box>
+            <Box>
+              <Button
+                color="error"
+                fullWidth={true}
+                onClick={handelLogout}
+              >
+                Logout
+              </Button>
+            </Box>
+          </Stack>
+        </Box>
       </Drawer>
     </>
   );

@@ -1,4 +1,4 @@
-import MainNav from "@/components/MainNav/MainNav";
+import MainNav from "@/components/MainNav";
 
 export default function RootLayout({
   children,
@@ -13,4 +13,4 @@ export default function RootLayout({
       {children}
     </main>
   )
-}
+};
