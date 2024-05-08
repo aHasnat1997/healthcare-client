@@ -1,9 +1,7 @@
 'use client';
 
-import { Avatar, Box, Button, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack } from "@mui/material";
+import { Avatar, Box, Button, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack } from "@mui/material";
 import { useState } from "react";
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
