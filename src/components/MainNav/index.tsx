@@ -43,16 +43,16 @@ function MainNav() {
           <Image
             alt="Logo"
             src={assets.img.logo}
-            height={100}
-            width={100}
+            height={120}
+            width={120}
           />
         </Box>
         <Stack spacing='4rem'>
           {
             navContent.map((item, i) => <Box key={i}>
               <div className="w-fit group">
-                <Link href={item.path} className="hover:text-[#0075ff]">{item.title}</Link>
-                <div className="p-[1px] bg-[#0075ff] origin-left scale-0 duration-500 group-hover:scale-100"></div>
+                <Link href={item.path} className="group-hover:text-primary">{item.title}</Link>
+                <div className="p-[1px] bg-primary origin-left scale-0 duration-500 group-hover:scale-100"></div>
               </div>
             </Box>)
           }

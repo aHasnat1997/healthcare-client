@@ -1,7 +1,7 @@
 function DashboardPage() {
   return (
-    <div>
-      Dashboard Page
+    <div className="text-justify bg-white">
+
     </div>
   );
 }

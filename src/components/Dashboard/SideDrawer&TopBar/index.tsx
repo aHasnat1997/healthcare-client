@@ -22,6 +22,7 @@ export default function SideDrawerTopBar({ drawerWidth }: { drawerWidth: number 
   return (
     <Box>
       <TopBar
+        drawerWidth={drawerWidth}
         isClosing={isClosing}
         setMobileOpen={setMobileOpen}
         mobileOpen={mobileOpen}

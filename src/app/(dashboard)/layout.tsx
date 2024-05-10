@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', height: '100vh', bgcolor: '#efefef' }}>
       <CssBaseline />
       <SideDrawerTopBar drawerWidth={drawerWidth} />
       <Box

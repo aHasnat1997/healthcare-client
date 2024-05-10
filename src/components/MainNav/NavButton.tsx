@@ -29,7 +29,9 @@ function NavButton() {
           </Box> :
           <Button
             variant="outlined"
+            color="secondary"
             onClick={() => router.push('/login')}
+            sx={{ color: 'secondary.main' }}
           >
             Login
           </Button>

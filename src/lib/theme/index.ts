@@ -5,7 +5,10 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#0075ff'
+      main: '#36c95f'
+    },
+    secondary: {
+      main: '#263452'
     }
   },
   components: {
@@ -13,7 +16,15 @@ const theme = createTheme({
       defaultProps: {
         variant: 'contained',
         sx: {
-          padding: '.5rem 2rem'
+          padding: '.5rem 2rem',
+          color: 'white'
+        }
+      }
+    },
+    MuiIconButton: {
+      defaultProps: {
+        sx: {
+          border: '.5px solid'
         }
       }
     },

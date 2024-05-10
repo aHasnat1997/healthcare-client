@@ -25,7 +25,7 @@ function RegisterPage() {
               </Stack>
               <Button className='w-full' onClick={() => router.push('/')}>Register</Button>
               <h4 className="mt-4 text-center">Already have an account?
-                <Link href='/login' className="text-[#0075ff]"> Click for Login</Link></h4>
+                <Link href='/login' className="text-primary"> Click for Login</Link></h4>
             </div>
           </Stack>
         </Box>

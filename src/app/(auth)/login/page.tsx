@@ -62,7 +62,7 @@ function LoginPage() {
               </Stack>
               <Button className='w-full' type='submit'>Login</Button>
               <h4 className='mt-4 text-center'>Don&apos;t have an account?
-                <Link href='/register' className='text-[#0075ff]'> Click for Register</Link></h4>
+                <Link href='/register' className='text-primary'> Click for Register</Link></h4>
             </form>
           </Stack>
         </Box>

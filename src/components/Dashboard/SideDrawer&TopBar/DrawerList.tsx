@@ -1,36 +1,39 @@
-import { Box, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from "@mui/material";
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import React from "react";
 import Image from "next/image";
 import assets from "@/assets";
 import Link from "next/link";
+import DrawerListItems from "./DrawerListItems";
 
 function DrawerList() {
+  const navList = DrawerListItems();
+
   return (
-    <Box sx={{ width: '100%' }}>
-      <Toolbar />
-      <Divider />
+    <Box sx={{ width: '100%', height: '100%', bgcolor: 'primary.main', color: 'white' }}>
+      {/* <Toolbar /> */}
+      <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <Link href='/' className="m-4">
+          <Image
+            alt="Logo"
+            src={assets.img.logoW}
+            height={150}
+            width={150}
+          />
+        </Link>
+      </Box>
+      {/* <Divider /> */}
       <List>
-        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-          <Link href='/' className="mb-4">
-            <Image
-              alt="Logo"
-              src={assets.img.logo}
-              height={100}
-              width={100}
-            />
+        {navList.map((list, i) => (
+          <Link key={i} href={list.path}>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {list.icon}
+                </ListItemIcon>
+                <ListItemText primary={list.title} />
+              </ListItemButton>
+            </ListItem>
           </Link>
-        </Box>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
         ))}
       </List>
     </Box>

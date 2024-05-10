@@ -56,7 +56,7 @@ function Hero() {
         <Container>
           <Stack direction='column' alignItems='flex-start' spacing='2rem' sx={{ width: '50%' }}>
             <h1 className="text-4xl font-semibold">
-              Providing Quality Health Care. Your Health is Our Top Priority with <span className="text-[#0077ff]">Comprehensive</span>
+              Providing Quality Health Care. Your Health is Our Top Priority with <span className="text-primary">Comprehensive</span>
             </h1>
             <p className="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
             <Button>Appointment Now</Button>
@@ -69,16 +69,16 @@ function Hero() {
             {
               cardData.map((data, i) => <div
                 key={i}
-                className="relative bg-white shadow-[0_0_1.5rem_rgba(0,0,0,0.1)] rounded-[.5rem_2rem] duration-500 group hover:-translate-y-4 hover:bg-[#0077ff] hover:text-white"
+                className="relative bg-white shadow-[0_0_1.5rem_rgba(0,0,0,0.1)] rounded-[.5rem_2rem] duration-500 group hover:-translate-y-4 hover:bg-primary hover:text-white"
               >
-                {/* <div className="bg-[#0077ff] w-full h-full rounded-[.5rem_2rem]" /> */}
+                {/* <div className="bg-primary w-full h-full rounded-[.5rem_2rem]" /> */}
                 <Stack
                   direction='column'
                   alignItems='center'
                   spacing={2}
                   sx={{ padding: '1.5rem 2rem' }}
                 >
-                  <h2 className="text-4xl text-[#0077ff] group-hover:text-white">{data.icon}</h2>
+                  <h2 className="text-4xl text-primary group-hover:text-white">{data.icon}</h2>
                   <h4 className="text-xl font-semibold">{data.title}</h4>
                   <p className="text-justify text-sm">{data.paragraph}</p>
                 </Stack>
