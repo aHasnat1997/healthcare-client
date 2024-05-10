@@ -12,12 +12,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <Box sx={{ display: 'flex', height: '100vh', bgcolor: '#efefef' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: '#efefef' }}>
       <CssBaseline />
       <SideDrawerTopBar drawerWidth={drawerWidth} />
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }, margin: '1.5rem 0' }}
       >
         <Toolbar />
         {children}

@@ -56,12 +56,10 @@ export default function TopBar({ drawerWidth, isClosing, setMobileOpen, mobileOp
               variant='h5'
               component='h1'
               fontWeight='600'
+              color='secondary.main'
             >
-              <span className="text-secondary">
-                Hello, {(currentUser?.name)[0].toUpperCase() + (currentUser?.name).substring(1)}
-              </span>
+              Dashboard
             </Typography>
-            <p className="text-[.7rem] md:text-base text-secondary/60">Welcome To, Health Care System</p>
           </Box>
           <Stack gap='1rem'>
             <IconButton

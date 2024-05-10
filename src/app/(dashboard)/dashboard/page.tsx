@@ -1,8 +1,12 @@
-function DashboardPage() {
-  return (
-    <div className="text-justify bg-white">
+import HomeTopBar from "@/components/Dashboard/DashboardHome/HomeTopBar";
+import { Box } from "@mui/material";
 
-    </div>
+function DashboardPage() {
+
+  return (
+    <Box>
+      <HomeTopBar />
+    </Box>
   );
 }
 
