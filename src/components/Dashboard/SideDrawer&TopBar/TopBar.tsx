@@ -4,6 +4,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { removeStoredUser } from "@/utils/currentStoredUser";
 
 type TTopBarPayload = {
   drawerWidth: number;
@@ -13,8 +14,6 @@ type TTopBarPayload = {
 };
 export default function TopBar({ drawerWidth, isClosing, setMobileOpen, mobileOpen }: TTopBarPayload) {
   const router = useRouter();
-  const currentUser = JSON.parse(localStorage.getItem('access-token')!);
-  // console.log(currentUser);
 
   const handleDrawerToggle = () => {
     if (!isClosing) {
@@ -23,7 +22,7 @@ export default function TopBar({ drawerWidth, isClosing, setMobileOpen, mobileOp
   };
 
   function handelLogout() {
-    localStorage.removeItem('access-token');
+    removeStoredUser('access-token');
     router.refresh();
     router.push('/');
     toast.error('User Logout');

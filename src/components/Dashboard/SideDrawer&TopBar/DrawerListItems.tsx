@@ -2,6 +2,7 @@ import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import AssistWalkerIcon from '@mui/icons-material/AssistWalker';
 import BiotechIcon from '@mui/icons-material/Biotech';
 import Groups2Icon from '@mui/icons-material/Groups2';
+import { getStoredUser } from '@/utils/currentStoredUser';
 
 type TList = {
   title: string,
@@ -10,7 +11,7 @@ type TList = {
 }
 
 export default function DrawerListItems(): TList[] {
-  const { role } = JSON.parse(localStorage.getItem('access-token')!);
+  const { role } = getStoredUser('access-token');
   // console.log(role);
 
 

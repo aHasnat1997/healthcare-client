@@ -3,11 +3,12 @@
 import { Avatar, Box, Button } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { getStoredUser } from "@/utils/currentStoredUser";
 
 function NavButton() {
   const router = useRouter();
-  const currentUser = JSON.parse(localStorage.getItem('access-token')!);
-  const userNameIcon = currentUser?.name?.split(' ').slice(0, 2).map((item: string[]) => item[0]).join('').toUpperCase();
+  const currentUser = getStoredUser('access-token');
+  const userNameIcon = currentUser?.name?.split(' ').slice(0, 2).map((item) => item[0]).join('').toUpperCase();
 
   return (
     <Box>

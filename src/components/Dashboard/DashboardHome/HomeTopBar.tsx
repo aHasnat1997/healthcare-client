@@ -1,9 +1,10 @@
 'use client';
 
+import { getStoredUser } from "@/utils/currentStoredUser";
 import { Box, Typography } from "@mui/material";
 
 export default function HomeTopBar() {
-  const currentUser = JSON.parse(localStorage.getItem('access-token')!);
+  const currentUser = getStoredUser('access-token');
   return (
     <Box sx={{
       bgcolor: 'white',

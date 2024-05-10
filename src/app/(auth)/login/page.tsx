@@ -2,8 +2,8 @@
 
 import assets from '@/assets';
 import { LoginUser } from '@/services/actions/Login.action';
+import { storUserToken } from '@/utils/currentStoredUser';
 import { Box, Button, Stack, TextField } from '@mui/material';
-import { jwtDecode } from 'jwt-decode';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -19,8 +19,7 @@ function LoginPage() {
     try {
       const userData = await LoginUser(values);
       if (userData.success && userData.data.accessToken) {
-        const decodedUserData = jwtDecode(userData.data.accessToken);
-        localStorage.setItem('access-token', JSON.stringify(decodedUserData));
+        storUserToken('access-token', userData.data.accessToken);
         toast.success(userData.message);
         router.push('/');
       }
