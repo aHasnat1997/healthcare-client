@@ -4,9 +4,10 @@ import Image from "next/image";
 import assets from "@/assets";
 import Link from "next/link";
 import DrawerListItems from "./DrawerListItems";
+import { usePathname } from "next/navigation";
 
 function DrawerList() {
-  const navList = DrawerListItems();
+  const pathname = usePathname();
 
   return (
     <Box sx={{ width: '100%', height: '100%', bgcolor: 'primary.main', color: 'white' }}>
@@ -23,9 +24,18 @@ function DrawerList() {
       </Box>
       {/* <Divider /> */}
       <List>
-        {navList.map((list, i) => (
-          <Link key={i} href={list.path}>
-            <ListItem disablePadding>
+        {DrawerListItems().map((list, i) => (
+          <Link
+            key={i}
+            href={list.path}
+          >
+            <ListItem disablePadding className={list.path === pathname ? 'bg-secondary/5' : ''}>
+              <Box
+                sx={
+                  list.path === pathname ?
+                    { bgcolor: 'secondary.main', padding: '4px', height: '3rem' } :
+                    { padding: '4px' }
+                } />
               <ListItemButton>
                 <ListItemIcon>
                   {list.icon}
