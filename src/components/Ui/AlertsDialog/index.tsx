@@ -16,12 +16,14 @@ type THCDialog = {
   title: string,
   contentText?: string,
   dispatchFun?: Function
+  actionBtn?: boolean
 }
-export default function ConfirmationDialog({
+export default function AlertsDialog({
   button,
   title,
   contentText = '',
-  dispatchFun
+  dispatchFun,
+  actionBtn = true
 }: THCDialog) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
@@ -54,26 +56,30 @@ export default function ConfirmationDialog({
             {contentText}
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
-          <Button
-            variant='outlined'
-            color="secondary"
-            autoFocus
-            onClick={handleClose}
-            sx={{ color: 'secondary.main' }}
-          >
-            Disagree
-          </Button>
-          <Button
-            onClick={() => {
-              handleClose()
-              dispatchFun && dispatchFun()
-            }}
-            autoFocus
-          >
-            Agree
-          </Button>
-        </DialogActions>
+        {
+          actionBtn ? <DialogActions>
+            <Button
+              variant='outlined'
+              color="secondary"
+              autoFocus
+              onClick={handleClose}
+              sx={{ color: 'secondary.main' }}
+            >
+              Cancel
+            </Button>
+            {
+              dispatchFun ? <Button
+                onClick={() => {
+                  handleClose();
+                  dispatchFun();
+                }}
+                autoFocus
+              >
+                Agree
+              </Button> : <></>
+            }
+          </DialogActions> : <></>
+        }
       </Dialog>
     </React.Fragment>
   );

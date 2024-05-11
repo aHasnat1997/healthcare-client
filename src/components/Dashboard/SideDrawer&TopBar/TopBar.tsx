@@ -5,7 +5,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { removeStoredUser } from "@/utils/currentStoredUser";
-import ConfirmationDialog from "@/components/Ui/ConfirmationDialog";
+import AlertsDialog from "@/components/Ui/AlertsDialog";
 
 type TTopBarPayload = {
   drawerWidth: number;
@@ -71,10 +71,10 @@ export default function TopBar({ drawerWidth, isClosing, setMobileOpen, mobileOp
               size="small"
               color="error"
             >
-              <ConfirmationDialog
+              <AlertsDialog
                 button={<LogoutIcon />}
                 title="Are you want to logout?"
-                contentText="If you want to logout then press 'Agree' or 'Disagree' for cancel."
+                contentText="If you want to logout then press 'Agree' or 'Cancel' for cancel."
                 dispatchFun={handelLogout}
               />
             </IconButton>

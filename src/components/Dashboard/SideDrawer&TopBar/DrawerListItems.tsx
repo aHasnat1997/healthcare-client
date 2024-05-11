@@ -17,22 +17,22 @@ export default function DrawerListItems(): TList[] {
 
   const admin: TList[] = [
     {
-      icon: <SpaceDashboardIcon />,
+      icon: <SpaceDashboardIcon sx={{ color: '#fff' }} />,
       title: 'Dashboard',
       path: '/dashboard'
     },
     {
-      icon: <BiotechIcon />,
+      icon: <BiotechIcon sx={{ color: '#fff' }} />,
       title: 'Doctors',
       path: '/dashboard/doctors'
     },
     {
-      icon: <AssistWalkerIcon />,
+      icon: <AssistWalkerIcon sx={{ color: '#fff' }} />,
       title: 'Patients',
       path: '/dashboard/patients'
     },
     {
-      icon: <Groups2Icon />,
+      icon: <Groups2Icon sx={{ color: '#fff' }} />,
       title: 'Admins',
       path: '/dashboard/admins'
     }
