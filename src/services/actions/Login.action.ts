@@ -1,4 +1,4 @@
-'use server';
+// 'use server';
 
 export async function LoginUser(payload: { email: string, password: string }) {
   const res = await fetch(`http://localhost:3030/api/v1/auth/login`, {
