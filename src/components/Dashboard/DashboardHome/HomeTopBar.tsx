@@ -1,12 +1,14 @@
 'use client';
 
-import { getStoredUser } from "@/utils/currentStoredUser";
+import { useAppSelector } from "@/redux/hooks";
+import { RootState } from "@/redux/store";
 import { Box, Typography } from "@mui/material";
 
 export default function HomeTopBar() {
-  const currentUser = getStoredUser('access-token');
+  const currentUser = localStorage.getItem('persist:userInfo');
+  const currentStoredUser = useAppSelector((state: RootState) => state.auth.userInfo);
   return (
-    <Box sx={{
+    currentStoredUser ? <Box sx={{
       bgcolor: 'white',
       padding: '2rem',
       borderRadius: '.5rem'
@@ -17,10 +19,10 @@ export default function HomeTopBar() {
         fontWeight='600'
       >
         <span className="text-secondary">
-          Hello, {(currentUser?.name)[0].toUpperCase() + (currentUser?.name).substring(1)}
+          Hello, {(currentStoredUser?.name as string)[0].toUpperCase() + (currentStoredUser?.name as string).substring(1)}
         </span>
       </Typography>
       <p className="text-secondary/60">Welcome To, Health Care System</p>
-    </Box>
+    </Box> : <></>
   );
 };

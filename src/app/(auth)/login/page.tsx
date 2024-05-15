@@ -1,8 +1,9 @@
 'use client';
 
 import assets from '@/assets';
+import { useAppDispatch } from '@/redux/hooks';
+import { storeUserInfo } from '@/redux/slices/authSlice';
 import { LoginUser } from '@/services/actions/Login.action';
-import { storUserToken } from '@/utils/currentStoredUser';
 import { Box, Button, Stack, TextField } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,22 +13,21 @@ import toast from 'react-hot-toast';
 
 function LoginPage() {
   const router = useRouter();
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
+  const dispatch = useAppDispatch();
 
   async function formSubmit(values: any) {
     // console.log(values);
     try {
       const userData = await LoginUser(values);
       if (userData.success && userData.data.accessToken) {
-        storUserToken('access-token', userData.data.accessToken);
+        dispatch(storeUserInfo(userData.data.accessToken));
         toast.success(userData.message);
         router.push('/');
       }
       if (!userData.success) {
         toast.error(userData.message);
       }
-      // console.log(userData);
-      // reset();
     } catch (error) {
       console.error(error)
     }

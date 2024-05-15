@@ -3,15 +3,18 @@
 import { ThemeProvider } from "@mui/material";
 import theme from "../theme";
 import { Provider } from "react-redux";
-import { store } from "@/redux/store";
+import { store, persistor } from "@/redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        {/* <PersistGate loading={null} persistor={persistor}> */}
         {children}
-      </ThemeProvider>
-    </Provider>
+        {/* </PersistGate> */}
+      </Provider>
+    </ThemeProvider>
   );
 }
 

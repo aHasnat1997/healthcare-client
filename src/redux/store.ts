@@ -1,17 +1,49 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { baseApi } from './api/baseApi'
+import { configureStore } from '@reduxjs/toolkit';
+import { baseApi } from './api/baseApi';
 import authReducer from './slices/authSlice';
+import storage from 'redux-persist/lib/storage';
+import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, persistReducer, persistStore } from 'redux-persist';
+// import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
+
+// const createNoopStorage = () => {
+//   return {
+//     getItem() {
+//       return Promise.resolve(null);
+//     },
+//     setItem(_key: string, value: number) {
+//       return Promise.resolve(value);
+//     },
+//     removeItem() {
+//       return Promise.resolve();
+//     },
+//   };
+// };
+
+// const storage =
+//   typeof window !== "undefined"
+//     ? createWebStorage("local")
+//     : createNoopStorage();
+
+const persistConfig = {
+  key: 'userInfo',
+  storage,
+};
+const persistedUserInfoReducer = persistReducer(persistConfig, authReducer);
+
 
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
+    auth: persistedUserInfoReducer,
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(baseApi.middleware),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+      }
+    }).concat(baseApi.middleware),
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
+export const persistor = persistStore(store);

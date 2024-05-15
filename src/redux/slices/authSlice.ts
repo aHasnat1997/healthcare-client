@@ -1,22 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { jwtDecode } from "jwt-decode";
 
-export type TToken = {
-  accessToken: string | null
+type TUser = {
+  name: string
+  email: string
+  image: string
+  role: string
+  iat: number
+  exp: number
+}
+
+type TInitialState = {
+  token: null | string;
+  userInfo: null | TUser;
 };
 
-const initialState: TToken = {
-  accessToken: null
+const initialState: TInitialState = {
+  token: null,
+  userInfo: null
 }
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    storeToken: (state, action) => {
-      state.accessToken = action.payload
+    storeUserInfo: (state, action) => {
+      const decodeUserData = jwtDecode(action.payload);
+      state.token = action.payload;
+      state.userInfo = decodeUserData as TUser;
+    },
+    removeUserInfo: (state) => {
+      state.token = null;
+      state.userInfo = null;
     }
   }
 });
 
-export const { storeToken } = authSlice.actions;
+export const { storeUserInfo, removeUserInfo } = authSlice.actions;
 export default authSlice.reducer;

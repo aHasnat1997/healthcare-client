@@ -24,9 +24,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <header>
-        <link rel="shortcut icon" href="https://ibb.co/ggvyyjW" type="image/x-icon" />
-      </header>
       <Providers>
         <body className={nunito.className}>
           {children}
