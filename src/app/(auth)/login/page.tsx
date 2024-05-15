@@ -3,7 +3,7 @@
 import assets from '@/assets';
 import { useAppDispatch } from '@/redux/hooks';
 import { storeUserInfo } from '@/redux/slices/authSlice';
-import { LoginUser } from '@/services/actions/Login.action';
+import { LoginUser } from '@/services/login/Login.action';
 import { Box, Button, Stack, TextField } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';

@@ -5,6 +5,7 @@ import { RootState } from "@/redux/store";
 import { Box, Typography } from "@mui/material";
 
 export default function HomeTopBar() {
+  // problem
   const currentUser = localStorage.getItem('persist:userInfo');
   const currentStoredUser = useAppSelector((state: RootState) => state.auth.userInfo);
   return (

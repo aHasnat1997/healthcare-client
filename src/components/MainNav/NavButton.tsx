@@ -8,6 +8,7 @@ import { RootState } from "@/redux/store";
 
 function NavButton() {
   const router = useRouter();
+  // problem
   const currentUser = localStorage.getItem('persist:userInfo');
   const currentStoredUser = useAppSelector((state: RootState) => state.auth.userInfo);
   const userNameIcon = currentStoredUser?.name?.split(' ').slice(0, 2).map((item: string) => item[0]).join('').toUpperCase();

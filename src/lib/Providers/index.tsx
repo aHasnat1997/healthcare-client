@@ -10,6 +10,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
+        {/* // problem*/}
         {/* <PersistGate loading={null} persistor={persistor}> */}
         {children}
         {/* </PersistGate> */}

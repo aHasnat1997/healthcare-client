@@ -12,6 +12,8 @@ type TList = {
 }
 
 export default function DrawerListItems(): TList[] {
+  // problem
+  const currentUser = localStorage.getItem('persist:userInfo');
   const currentStoredUser = useAppSelector((state: RootState) => state.auth.userInfo);
   // console.log(currentStoredUser?.role);
 
