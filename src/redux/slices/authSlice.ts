@@ -1,14 +1,6 @@
+import { TUser } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 import { jwtDecode } from "jwt-decode";
-
-type TUser = {
-  name: string
-  email: string
-  image: string
-  role: string
-  iat: number
-  exp: number
-}
 
 type TInitialState = {
   token: null | string;

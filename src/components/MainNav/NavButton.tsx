@@ -5,14 +5,18 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
+import { useEffect, useState } from "react";
+import { TUser } from "@/types";
 
 function NavButton() {
   const router = useRouter();
-  // problem
-  const currentUser = localStorage.getItem('persist:userInfo');
-  const currentStoredUser = useAppSelector((state: RootState) => state.auth.userInfo);
+  const [currentStoredUser, setCurrentStoredUser] = useState<TUser | null>(null);
+  const storedUser = useAppSelector((state: RootState) => state.auth.userInfo);
+  useEffect(() => {
+    setCurrentStoredUser(storedUser);
+  }, [storedUser]);
+
   const userNameIcon = currentStoredUser?.name?.split(' ').slice(0, 2).map((item: string) => item[0]).join('').toUpperCase();
-  // console.log(currentUser);
 
   return (
     <Box>

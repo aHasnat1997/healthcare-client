@@ -2,12 +2,17 @@
 
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
+import { TUser } from "@/types";
 import { Box, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
 export default function HomeTopBar() {
-  // problem
-  const currentUser = localStorage.getItem('persist:userInfo');
-  const currentStoredUser = useAppSelector((state: RootState) => state.auth.userInfo);
+  const [currentStoredUser, setCurrentStoredUser] = useState<TUser | null>(null);
+  const storedUser = useAppSelector((state: RootState) => state.auth.userInfo);
+  useEffect(() => {
+    setCurrentStoredUser(storedUser);
+  }, [storedUser]);
+
   return (
     currentStoredUser ? <Box sx={{
       bgcolor: 'white',
